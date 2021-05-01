@@ -1,11 +1,15 @@
-import style from '../src/styles/components/App.module.css'
-import SingPage from './pages/SignPage'
-
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import SingPage from './pages/SignPage';
 
 function App() {
   return (
     <div className={style.container}>
-      <SingPage />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={SingPage} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
