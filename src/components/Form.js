@@ -8,7 +8,7 @@ export default function Form(){
     const inputPassword = useRef(null);
     const handleSubmit = useCallback(evt => {
         evt.preventDefault()
-    })
+    }, [])
 
     return(
         <div className={styles.card}> 
