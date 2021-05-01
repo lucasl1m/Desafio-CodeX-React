@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import SingPage from './pages/SignPage';
+import style from '../src/styles/components/App.module.css'
 
 function App() {
   return (

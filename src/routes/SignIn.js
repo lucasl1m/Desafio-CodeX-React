@@ -50,20 +50,19 @@ export default function SignIn() {
 
     return ( 
         <div className={styles.card}> 
-        <form action="" method="get" onSubmit={handleSubmit}>
-            <h1 className={styles.title}>{title}</h1>
+        <form action="" method="get">
+            <h1 className={styles.title}></h1>
             <p className={styles.subtitle}>Enter your credentials to acess your account</p>
 
             <div className={styles.inputfield}>
                 <label htmlFor="email">{emailInvalid ? emailInvalid : 'Email'}</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email" autoComplete="off"
-                ref={inputEmail} onChange={onChangeEmail} value={email}/>
+                <input type="email" name="email" id="email" placeholder="Enter your email" autoComplete="off" onChange={onChangeEmail} value={email}/>
                 <div className={styles.underline}></div>
             </div>
 
             <div className={styles.inputfield}>
                 <label htmlFor="password">{passwordInvalid ? passwordInvalid : 'Password'}</label>
-                <input type={eye ? 'text' : 'password'} name="" id="password" placeholder="Enter your password" ref={inputPassword}  value={password} onChange={onChangePassword}/>
+                <input type={eye ? 'text' : 'password'} name="" id="password" placeholder="Enter your password" value={password} onChange={onChangePassword}/>
                 <div className={styles.underline}></div>
             </div>
 
@@ -71,10 +70,7 @@ export default function SignIn() {
 
             <p>
                 Not registered yet ? 
-                <a href="" onClick ={ () => {
-                    setTitle("Create Account")
-                }}
-            >Create an Account</a>
+                <a href="" >Create an Account</a>
             </p>
         </form>
     </div>
