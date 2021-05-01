@@ -68,6 +68,8 @@ export default function SignIn() {
 
             <input type="submit" value="Sing In" onClick={toSignIn} />
 
+            <span onClick={onEye}>{eye ? <FaEye /> : <FaEyeSlash />}</span>
+
             <p>
                 Not registered yet ? 
                 <a href="" >Create an Account</a>
