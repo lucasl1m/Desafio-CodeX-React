@@ -7,11 +7,11 @@ import LoadError from './routes/LoadError'
 import Loading from './routes/Loading'
 
 export default function Routes() {
-    const [tokenStatus, setTokenStatus] = useState(2)
+    const [tokenStatus, setTokenStatus] = useState(1)
     const [token, setToken] = useState('')
 
     useEffect(() => {
-        setToken(localStorage.getItem('createUserToken'))
+        setToken(localStorage.getItem('/user'))
         checkToken(token).then(res => {
             res.status ? setTokenStatus(2) : setTokenStatus(3)
         }).catch(err => {

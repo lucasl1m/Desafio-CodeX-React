@@ -72,6 +72,10 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
+.inputfield label{
+    display: none;
+}
+
 .card form input[type="submit"] {
     margin-top: 2rem;
     padding: 0.7rem;

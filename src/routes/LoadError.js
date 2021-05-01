@@ -1,13 +1,14 @@
 import React from 'react'
+import app from '../styles/components/App.module.css'
 
 export default function LoadError() {
     return (
-        <div>
+        <div className={app.container}>
             <div>
                 <h2>Loading Error</h2>
             </div>
             <button onClick={() => window.location.reload(false)}>
-                Clique aqui para atualizar a pagina quando o servidor estiver online
+                Click here to reload the page 
             </button>
         </div>
     )
