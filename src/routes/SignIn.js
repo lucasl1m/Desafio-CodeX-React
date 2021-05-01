@@ -24,7 +24,7 @@ export default function SignIn() {
         if (!email.match(/\S+@\S+\.\S+/)) {
             setEmailInvalid('Insira um email valido')
         } else if (!password) {
-            setPasswordInvalid('Insisra uma senha')
+            setPasswordInvalid('Insira uma senha')
         } else {
             setEmailInvalid('')
             setPasswordInvalid('')
