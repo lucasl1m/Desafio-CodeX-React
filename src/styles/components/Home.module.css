@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    
+    max-width: 940px;
+    height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+  
+    margin: 0 auto;
+}
+
+.card{
+    width: 850px;
+    min-height: 60vh;
+    padding: 3rem;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.header button{
+    border: none;
+    font-size: 1rem;
+    background-color: var(--white);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    cursor: pointer
+}
+
+.title{
+    font-size: 2.25rem;
+    color: var(--dark-blue);
+    margin-right: 3rem;
+}
+
+.newTask{
+    font-size: 1.25rem;
+    color: var(--blue-gray)
+}
+
+.datatable {
+    display: flex;
+    box-shadow: 0px 4px 10px 4px rgba(161, 175, 196, 0.4);
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.datatable thead tr th:first-child, 
+.datatable tbody tr td:first-child {
+    border-radius: 0.25rem 0 0 0.25rem;
+    padding-right: 4rem;
+}
+
+.datatable th{
+    background-color: white;
+    font-weight: 500;
+    padding: 1rem 4rem;
+    color: var(--dark-blue);
+}
+
+.datatable td{
+    background-color: white;
+    padding: 1rem 3rem;
+}
+
+.datatable tbody tr {
+    opacity: 0.7;
+}
+
+.datatable tbody tr:hover {
+    opacity: 1;
+}
+

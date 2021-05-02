@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { postSignIn } from '../services/AuthService'
 import styles from '../styles/components/Form.module.css';
 import app from '../styles/components/App.module.css'
-import {useHistory} from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 export default function SignIn() {
 
@@ -36,7 +36,7 @@ export default function SignIn() {
                 if (token) {
                     localStorage.setItem('task-token', token.token)
                     localStorage.setItem('id', token.user._id)
-                    history.push('/user/auth')
+                    history.push('/task/create')
             }
         }).catch(err => console.log(err))
     }
@@ -46,7 +46,7 @@ export default function SignIn() {
         <div class={app.container}>
             <div className={styles.card}>
                 <form>
-                    <h1 className={styles.title}>Welcome Back</h1>
+                    <h1 className={styles.title}>Login</h1>
                     <p className={styles.subtitle}>Enter your credentials to acess your account</p>
                     <div className={styles.inputfield}>
                         <label htmlFor="email">{emailInvalid ? emailInvalid : 'Email'}</label>
@@ -61,7 +61,7 @@ export default function SignIn() {
                     <input type="submit" value="Sing In" onClick={toSignIn} />
                     <p>
                         Not registered yet ?
-                        <a>SingUp</a>
+                        <Link to={'/user/create'}><a>SingUp</a></Link>
                     </p>
                 </form>
             </div>

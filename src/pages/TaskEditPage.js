@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import {getTaskById, putTask} from "../services/TaskServices"
 
-
 export default function TaskEditPage({history}) {
   const {id} = history.location.state
-  const [task, setTask] = useState('')
+  const [tasks, setTasks] = useState('')
   const [taskError, setTaskError] = useState({})
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  const [task, setTask] = useState('')
 
   useEffect(() => {
       getTaskById(id)
         .then(res => {
-          setTask(res)
-          setTitle(res.title)
-          setDescription(res.description)
+          setTasks(res)
+          setTask(res.task)
         })
         .catch(err => setTaskError(err))
   }, [id])
 
-  const onChangeTitle = (event) => {
-    setTitle(event.target.value)
+  const onChangeTask = (event) => {
+    setTask(event.target.value)
   }
 
-  const onChangeDescription = (event) => {
-    setDescription(event.target.value)
-  }
+  const toEdit = (req) => {
+    req.preventDefault()
+    tasks.task = req.task
+    tasks.prioridade = req.prioridade
+    console.log(tasks)
 
-  const toEdit = (event) => {
-    event.preventDefault()
-    task.title = title
-    task.description = description
-
-    putTask(id, task)
-      .then(() => history.push('/task/edit'))
+    putTask(id, tasks)
+      .then(() => history.push('tasks'))
       .catch(err => setTaskError(err))
   }
 
@@ -41,59 +35,41 @@ export default function TaskEditPage({history}) {
   if (taskError) {
     return (
       <div>
-        <h2 className="text-danger">Algo deu errado</h2>
+        <h2>Error</h2>
       </div>
     )
   } else {
     return (
-      <div className="row p-2">
-        <div className="col-md-4 p-2"></div>
-        <div className="col-md-4 p-2">
-          <div className="card bg-primary text-black">
-            <div className="card-header text-center">
-              <h4 className="card-text">Editar Tarefa</h4>
-            </div>
-            <div className="card-body">
-              <form>
-                <div className="form-group">
-                  <label htmlFor="title" className="form-control-label">Titulo</label>
-                  <input
-                    type="text"
-                    id="title"
-                    className="form-control"
-                    value={title}
-                    onChange={onChangeTitle}
-  
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="priority" className="form-control-label">Prioridade</label>
-                  <select name="priority">
-                      <option value="Alta">Alta</option>
-                      <option value="Baixa">Baixa</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="description" className="form-control-label">Descrição</label>
-                  <textarea
-                    name="description"
-                    id="description"
-                    cols="30"
-                    rows="5"
-                    className="form-control"
-                    value={description}
-                    onChange={onChangeDescription}
-                  />
-                </div>
-              </form>
-            </div>
-            <div className="card-footer">
-              <button className="btn btn-outline-light rounded-circle btn-lg" onClick={toEdit}>Editar</button>
-            </div>
+            <div>
+              <div className="card-header text-center">
+                <h4 className="card-text">Editar Tarefa</h4>
+              </div>
+              <div className="card-body">
+                <form>
+                  <div className="form-group">
+                    <label htmlFor="title" className="form-control-label">Titulo</label>
+                    <input
+                      type="text"
+                      id="title"
+                      className="form-control"
+                      value={task}
+                      onChange={onChangeTask}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="prioridade" className="form-control-label">Priority</label>
+                    <select name="prioridade">
+                        <option value="Alta">Alta</option>
+                        <option value="Baixa">Baixa</option>
+                    </select>
+                  </div>
+              
+                </form>
+              </div>
+              <div className="card-footer">
+                <button className="btn btn-outline-light rounded-circle btn-lg" onClick={toEdit}>Edit</button>
+              </div>
           </div>
-        </div>
-        <div className="col-md-4 p-2"></div>
-      </div>
     )
   }
   

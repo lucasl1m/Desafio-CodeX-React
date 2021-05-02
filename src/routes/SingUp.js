@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { postSingUp } from '../services/AuthService'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import styles from '../styles/components/Form.module.css'
+import app from '../styles/components/App.module.css'
 
 export default function SignUp() {
 
@@ -37,30 +38,28 @@ export default function SignUp() {
     }
 
     return (
-        <div className={styles.card}>
-            <form>
-                <h1 className={styles.title}>Create Account</h1>
-                <p className={styles.subtitle}>Enter your credentials to create your account</p>
-
-                <div className={styles.inputfield}>
-                    <label htmlFor="email">{emailInvalid ? emailInvalid : 'Email'}</label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email" autoComplete="off" onChange={onChangeEmail} value={email} />
-                    <div className={styles.underline}></div>
-                </div>
-
-                <div className={styles.inputfield}>
-                    <label htmlFor="password">{passwordInvalid ? passwordInvalid : 'Password'}</label>
-                    <input type='password' name="" id="password" placeholder="Enter your password" value={password} onChange={onChangePassword} />
-                    <div className={styles.underline}></div>
-                </div>
-
-                <input type="submit" value="Sing Up" onClick={toSignUp} />
-
-                <p>
-                    Already have an Account ?
-                    <a>Sing In</a> 
-                </p>
-            </form>
+        <div class={app.container}>
+            <div className={styles.card}>
+                <form>
+                    <h1 className={styles.title}>Create Account</h1>
+                    <p className={styles.subtitle}>Enter your credentials to create your account</p>
+                    <div className={styles.inputfield}>
+                        <label htmlFor="email">{emailInvalid ? emailInvalid : 'Email'}</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" autoComplete="off" onChange={onChangeEmail} value={email} />
+                        <div className={styles.underline}></div>
+                    </div>
+                    <div className={styles.inputfield}>
+                        <label htmlFor="password">{passwordInvalid ? passwordInvalid : 'Password'}</label>
+                        <input type='password' name="" id="password" placeholder="Enter your password" value={password} onChange={onChangePassword} />
+                        <div className={styles.underline}></div>
+                    </div>
+                    <input type="submit" value="Sing Up" onClick={toSignUp} />
+                    <p>
+                        Already have an Account ?
+                        <Link to="/user/auth"><a>Sing In</a> </Link>
+                    </p>
+                </form>
+            </div>
         </div>
     )
 }
