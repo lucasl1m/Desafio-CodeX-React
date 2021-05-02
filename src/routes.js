@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import App from './App'
 
 import SignIn from './routes/SignIn'
-import SingUp from './routes/SingUp'
 import {checkToken} from './services/AuthService'
 import LoadError from './routes/LoadError'
 import Loading from './routes/Loading'
@@ -12,7 +11,7 @@ export default function Routes() {
     const [token, setToken] = useState('')
 
     useEffect(() => {
-        setToken(localStorage.getItem('user'))
+        setToken(localStorage.getItem('task-token'))
         checkToken(token).then(res => {
             res.status ? setTokenStatus(2) : setTokenStatus(3)
         }).catch(err => {
@@ -24,7 +23,7 @@ export default function Routes() {
     if (tokenStatus === 1) {
         return <Loading />
     } else if (tokenStatus === 2) {
-        return <SingUp />
+        return <App />
     } else if (tokenStatus === 4) {
         return <SignIn />
     } else if (tokenStatus === 4) {

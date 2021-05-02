@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import {postTask} from "../services/TaskServices"
+import { postTask } from "../services/TaskServices"
 
 
-export default function TaskPage({history}) {
+export default function TaskListPage({history}) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [priority, setSelection] = useState('')
+
+  const onChangeDescription = (event) => {
+    setDescription(event.target.value)
+  }
 
   const onSelectOption = (event) => {
     setSelection(event.target.value)
@@ -13,10 +17,6 @@ export default function TaskPage({history}) {
 
   const onChangeTitle = (event) => {
     setTitle(event.target.value)
-  }
-
-  const onChangeDescription = (event) => {
-    setDescription(event.target.value)
   }
 
   const toSave = (event) => {
@@ -27,7 +27,7 @@ export default function TaskPage({history}) {
         if (res.title) {
           setTitle('')
           setDescription('')
-          history.push('/task-list')
+          history.push('/task')
         }
       })
       .catch(err => console.log(err))
@@ -45,14 +45,7 @@ export default function TaskPage({history}) {
             <form>
               <div className="form-group">
                 <label htmlFor="title" className="form-control-label">Titulo</label>
-                <input
-                  type="text"
-                  id="title"
-                  className="form-control"
-                  value={title}
-                  onChange={onChangeTitle}
-
-                />
+                <input type="text" id="title" className="form-control" value={title} onChange={onChangeTitle} />
               </div>
               <div className="form-group">
                 <label htmlFor="priority" className="form-control-label">Prioridade</label>

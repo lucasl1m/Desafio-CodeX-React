@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { checkToken, postSignIn } from '../services/AuthService'
+import { postSignIn } from '../services/AuthService'
 import styles from '../styles/components/Form.module.css';
 import app from '../styles/components/App.module.css'
+import {useHistory} from 'react-router-dom'
 
 export default function SignIn() {
 
@@ -9,6 +10,8 @@ export default function SignIn() {
     const [emailInvalid, setEmailInvalid] = useState('')
     const [email, setEmail] = useState('')
     const [passwordInvalid, setPasswordInvalid] = useState('')
+
+    const history = useHistory()
 
     const onChangeEmail = (event) => {
         setEmailInvalid('')
@@ -31,21 +34,18 @@ export default function SignIn() {
 
             postSignIn({ email, password }).then(token => {
                 if (token) {
-                    checkToken(token).then(res => {
-                        if (res.status) {
-                            localStorage.setItem('pass_ok', token)
-                            window.location.reload(false)
-                        }
-                    }).catch(err => console.log(err))
-                }
-            }).catch(err => console.log(err))
-        }
+                    localStorage.setItem('task-token', token.token)
+                    localStorage.setItem('id', token.user._id)
+                    history.push('/user/auth')
+            }
+        }).catch(err => console.log(err))
+    }
     }
 
     return (
         <div class={app.container}>
             <div className={styles.card}>
-                <form action="" method="get">
+                <form>
                     <h1 className={styles.title}>Welcome Back</h1>
                     <p className={styles.subtitle}>Enter your credentials to acess your account</p>
                     <div className={styles.inputfield}>
@@ -61,7 +61,7 @@ export default function SignIn() {
                     <input type="submit" value="Sing In" onClick={toSignIn} />
                     <p>
                         Not registered yet ?
-                    <a href="" >Create an Account</a>
+                        <a>SingUp</a>
                     </p>
                 </form>
             </div>

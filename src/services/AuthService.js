@@ -17,6 +17,5 @@ export const postSingUp = async ({email, password}) => {
 
 export const getUsers = async () => {
     const response = await api.get('/users')
-    
     return response.data
 }

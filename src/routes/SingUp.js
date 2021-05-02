@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { checkToken, postSingUp } from '../services/AuthService'
+import { postSingUp } from '../services/AuthService'
+import { useHistory } from 'react-router-dom'
 import styles from '../styles/components/Form.module.css'
 
 export default function SignUp() {
 
-    const [password, setPassword] = useState('')
     const [emailInvalid, setEmailInvalid] = useState('')
     const [email, setEmail] = useState('')
     const [passwordInvalid, setPasswordInvalid] = useState('')
+    const [password, setPassword] = useState('')
 
+    const history = useHistory()
 
     const onChangeEmail = (event) => {
         setEmailInvalid('')
@@ -25,26 +27,18 @@ export default function SignUp() {
             setEmailInvalid('Insira um email valido')
         } else if (!password) {
             setPasswordInvalid('Insisra uma senha')
-        } else {
-            setEmailInvalid('')
-            setPasswordInvalid('')
-
-            postSingUp({ email, password }).then(token => {
-                if (token) {
-                    checkToken(token).then(res => {
-                        if (res.status) {
-                            localStorage.setItem('task-token', token)
-                            window.location.reload(false)
-                        }
-                    }).catch(err => console.log(err))
-                }
-            }).catch(err => console.log(err))
         }
+        postSingUp({ email, password }).then(status => {
+            console.log(status)
+            if (status === 201) {
+                history.push('/user/auth')
+            }
+        }).catch(err => console.log(err))
     }
 
     return (
         <div className={styles.card}>
-            <form action="" method="get">
+            <form>
                 <h1 className={styles.title}>Create Account</h1>
                 <p className={styles.subtitle}>Enter your credentials to create your account</p>
 
@@ -64,7 +58,7 @@ export default function SignUp() {
 
                 <p>
                     Already have an Account ?
-            <a href="" >Sign In</a>
+                    <a>Sing In</a> 
                 </p>
             </form>
         </div>

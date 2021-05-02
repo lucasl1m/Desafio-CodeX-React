@@ -65,7 +65,7 @@
     font-size: 1rem;
     color: rgba(0, 0, 0, 0.7);
     border: none;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .inputfield input::placeholder {
@@ -101,5 +101,7 @@
     margin-top: 1.25rem;
 }
 .card form a{
-    color: var(--dark-blue)
+    margin-left: .5rem;
+    color: var(--dark-blue);
+    cursor: pointer;
 }
