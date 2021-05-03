@@ -36,7 +36,6 @@ form input{
     border: none;
     outline: none;
     padding: 1rem 2rem;
-    
 }
 
 form input::placeholder {
@@ -55,7 +54,7 @@ form select{
     background-color: var(--blue-milk);
     border-radius: 4px;
     outline: none;
-    padding: .7rem 2rem;
+    padding: .74rem 2.1rem;
     color: var(--white);
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
@@ -73,6 +72,7 @@ form select{
     font-family: 'Poppins', sans-serif;
     transition: all 0.5s ease;
     margin-right: 1rem;
+    
 }
 
 .cardbuttons{
@@ -80,7 +80,8 @@ form select{
 }
 
 .saveButton:hover{
-    background-color: var(--blue)
+    background-color: var(--blue);
+    transform: translate3d(0 -3px 0);
 }
 
 .cancelButton:hover{

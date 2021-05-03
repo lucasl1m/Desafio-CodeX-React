@@ -34,9 +34,9 @@ export default function SignIn() {
 
             postSignIn({ email, password }).then(token => {
                 if (token) {
-                    localStorage.setItem('task-token', token.token)
+                    localStorage.setItem('token', token.token)
                     localStorage.setItem('id', token.user._id)
-                    history.push('/task/create')
+                    history.push('/home')
             }
         }).catch(err => console.log(err))
     }
@@ -58,10 +58,10 @@ export default function SignIn() {
                         <input type='password' name="" id="password" placeholder="Enter your password" value={password} onChange={onChangePassword} />
                         <div className={styles.underline}></div>
                     </div>
-                    <input type="submit" value="Sing In" onClick={toSignIn} />
+                    <Link to={'/home'}><input type="submit" value="Sing In" onClick={toSignIn} /></Link>
                     <p>
                         Not registered yet ?
-                        <Link to={'/user/create'}><a>SingUp</a></Link>
+                        <Link to={'/user/create'}><a href="#">Create account</a></Link>
                     </p>
                 </form>
             </div>

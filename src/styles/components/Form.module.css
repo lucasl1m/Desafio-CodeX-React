@@ -77,8 +77,9 @@
 }
 
 .card form input[type="submit"] {
+    width: 100%;
     margin-top: 2rem;
-    padding: 0.7rem;
+    padding: 1rem;
     background-color: var(--blue-milk);
     cursor: pointer;
     color: white;
@@ -93,6 +94,7 @@
 .card form input[type="submit"]:hover {
     letter-spacing: 0.5px;
     background-color: var(--blue);
+    transform: translate3d(0 -3px 0);
 }
 
 .card p{

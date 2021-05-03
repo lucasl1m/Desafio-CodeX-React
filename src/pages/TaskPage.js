@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom'
 
 export default function TaskForm({ history }) {
   const [task, setTask] = useState('')
-  const [priority, setSelection] = useState('')
+  const [priority, setPrioriry] = useState('')
 
   const onSelectOption = (event) => {
-    setSelection(event.target.value)
+    setPrioriry(event.target.value)
   }
 
   const onChangeTask = (event) => {
@@ -19,13 +19,15 @@ export default function TaskForm({ history }) {
     event.preventDefault()
 
     postTask({ task, priority })
-      .then(res => {
-        if (res.task) {
-          setTask('')
-          history.push('task')
-        }
-      })
-      .catch(err => console.log(err))
+    .then(res => {
+      console.log(res)
+      if (res.newTask) {
+        setTask('')
+        setPrioriry('')
+        history.push('/task')
+      }
+    })
+    .catch(err => console.log(err))
   }
 
   return (
@@ -38,6 +40,7 @@ export default function TaskForm({ history }) {
           <div className={style.formItem}>
             <label htmlFor="name" className={style.formItemLabel}>Name</label>
             <input type="text" id="name" className="form-control" value={task} onChange={onChangeTask} placeholder="Name" autoComplete="off"/>
+            <div className={style.underline}></div>
           </div>
           <div className={style.formItem}>
             <label htmlFor="priority" className={style.formItemLabel}>Priority</label>
@@ -48,8 +51,9 @@ export default function TaskForm({ history }) {
           </div>
         </form>
         <div className={style.cardbuttons}>
-          <NavLink to={'/'}><button className={style.cancelButton}>Cancel</button></NavLink>
-          <NavLink to={'/'}><button className={style.saveButton} onClick={toSave}>Save</button></NavLink>
+          <NavLink to={'/home'}><button className={style.cancelButton}>Cancel</button></NavLink>
+
+          <NavLink to={'/home'}><button className={style.saveButton} onClick={toSave}>Save</button></NavLink>
         </div>
       </div>
     </div>

@@ -13,9 +13,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/user/auth" component={SignIn} />
+          <Route exact path="/" component={SignIn} />
           <Route exact path="/user/create" component={SignUp} />
-          <Route exact path="/" component={Home} />  
+          <Route exact path="/home" component={Home} />  
           <Route exact path="/task/create" component={TaskPage} />
           <Route exact path="/task/edit" component={TaskEditPage} />
         </Switch>

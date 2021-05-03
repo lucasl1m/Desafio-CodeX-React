@@ -53,10 +53,10 @@ export default function SignUp() {
                         <input type='password' name="" id="password" placeholder="Enter your password" value={password} onChange={onChangePassword} />
                         <div className={styles.underline}></div>
                     </div>
-                    <input type="submit" value="Sing Up" onClick={toSignUp} />
+                    <Link to={'/'}><input type="submit" value="Sing Up" onClick={toSignUp} /></Link>
                     <p>
                         Already have an Account ?
-                        <Link to="/user/auth"><a>Sing In</a> </Link>
+                        <Link to="/"><a>Sing In</a></Link>
                     </p>
                 </form>
             </div>

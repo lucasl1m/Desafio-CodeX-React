@@ -8,7 +8,7 @@ export default function Home() {
             <div className={styles.card}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>My Task</h2>
-                    <button>logout</button>
+                    <NavLink to={'/'}><button>logout</button></NavLink>
                 </div>
 
                 <NavLink to='/task/create' className={styles.newTask}>+ New task</NavLink>
